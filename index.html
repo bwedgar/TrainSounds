@@ -23,11 +23,12 @@
   <button id="oo" class="button">oo</button><br>
 
   <button id="i" class="button">i</button><br>
-
+<audio src="steam.mp3"></audio>
   <script>
     play = (formant1, formant2, formant3) => {
 
       audioCtx = new AudioContext || window.webkitAudioContext;
+  
 
       oscillator = audioCtx.createOscillator()
       f1 = audioCtx.createBiquadFilter()
