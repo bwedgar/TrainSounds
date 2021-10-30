@@ -27,12 +27,13 @@
 
   <script>
     steam = 0;
-    
+
     start = () => {
 
       audioCtx = new AudioContext || window.webkitAudioContext;
-      const audioElement = document.getElementById("steam");
-      const track = audioCtx.createMediaElementSource(audioElement);
+
+    audioElement = document.getElementById("steam");
+    track = audioCtx.createMediaElementSource(audioElement);
     }
 
 
