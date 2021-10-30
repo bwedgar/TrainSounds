@@ -23,13 +23,26 @@
   <button id="oo" class="button">oo</button><br>
 
   <button id="i" class="button">i</button><br>
-<audio src="steam.mp3"></audio>
   <script>
     play = (formant1, formant2, formant3) => {
 
       audioCtx = new AudioContext || window.webkitAudioContext;
-  
-
+source = audioCtx.createBufferSource();
+var request = new XMLHttpRequest();
+request.open(‘GET’, ‘steam.mp3’, true);
+request.responseType = ‘arraybuffer’;
+request.onload = function() {
+var audioData = request.response;
+audioCtx.decodeAudioData(audioData, function(buffer) {
+source.buffer = buffer;
+source.connect(analyser);
+analyser.connect(audioCtx.destination);
+source.loop = true;
+source.start(0);
+},function(e){“Error with decoding audio data” + e.err});
+}
+request.send(); }
+    /*
       oscillator = audioCtx.createOscillator()
       f1 = audioCtx.createBiquadFilter()
       f2 = audioCtx.createBiquadFilter()
@@ -64,7 +77,7 @@
       elapsedTime += 2;
     }
 
-
+*/
 
 
 
