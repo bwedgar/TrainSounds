@@ -33,19 +33,19 @@
       audioCtx = new AudioContext || window.webkitAudioContext;
 
       audioElement = document.getElementById("steam");
-      steam = audioCtx.createMediaElementSource(audioElement);
+      steamTrack = audioCtx.createMediaElementSource(audioElement);
       audioElement = document.getElementById("seagull");
-      seagull = audioCtx.createMediaElementSource(audioElement);
+      seagullTrack = audioCtx.createMediaElementSource(audioElement);
     }
 
 
-    play = (fileName) => {
+    playSound = (track) => {
 
 
 
-      fileName.connect(audioCtx.destination);
+      track.connect(audioCtx.destination);
 
-      fileName.play();
+      track.play();
 
 
     }
@@ -54,14 +54,14 @@
     });
 
     document.getElementById("ee").addEventListener("click", () => {
-      play(steam);
+      playSound(steamTrack);
     });
     document.getElementById("oo").addEventListener("click", () => {
-      play(seagull);
+      playSound(seagullTrack);
     });
   </script>
 
-
+kk
 </body>
 
 </html>
