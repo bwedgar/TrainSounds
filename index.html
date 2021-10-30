@@ -24,6 +24,8 @@
   <button id="start" class="button">start</button><br>
   <button id="ee" class="button">steam engine</button><br>
   <button id="oo" class="button">seagull</button><br>
+  <input type="range" min="1" max="1" value="5" id="steamGainNode">
+
 
   <script>
     steam = 0;
@@ -39,29 +41,31 @@
     }
 
 
-    playSound = (track,audioElement) => {
-
-
-
+    playSound = (track, audioElement, gainNode) => {
       track.connect(audioCtx.destination);
-
+      gainNode = audioCtx.createGain();
       audioElement.play();
-
-
     }
+
     document.getElementById("start").addEventListener("click", () => {
       start();
     });
 
     document.getElementById("ee").addEventListener("click", () => {
-      playSound(steamTrack,steamAudioElement);
+      playSound(steamTrack, steamAudioElement, steamGainNode);
     });
     document.getElementById("oo").addEventListener("click", () => {
-      playSound(seagullTrack,seagullAudioElement);
+      playSound(seagullTrack, seagullAudioElement, seagullGainNode);
     });
+
+    steamGainNode.oninput = function() {
+      steamGainNode = this.value;
+    }
+
+
   </script>
 
-v4
+  v4
 </body>
 
 </html>
