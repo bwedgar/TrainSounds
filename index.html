@@ -42,6 +42,13 @@ source.start(0);
 },function(e){“Error with decoding audio data” + e.err});
 }
 request.send(); }
+    g = audioCtx.createGain();
+      source.start(0);
+  g.gain.value = 0.5;
+  source.connect(g);
+  g.connect(audioCtx.destination);
+    
+    
     /*
       oscillator = audioCtx.createOscillator()
       f1 = audioCtx.createBiquadFilter()
