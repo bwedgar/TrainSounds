@@ -26,13 +26,12 @@
   <button id="oo" class="button">seagull</button><br>
 
   <script>
+    start = () => {
 
-start= () => {
-
-}  audioCtx = new AudioContext || window.webkitAudioContext;
-  const audioElement = document.getElementById("steam");
-  const steam = audioCtx.createMediaElementSource(audioElement);
-}
+    audioCtx = new AudioContext || window.webkitAudioContext;
+    const audioElement = document.getElementById("steam");
+    const steam = audioCtx.createMediaElementSource(audioElement);
+    }
 
 
     play = (fileName) => {
@@ -46,7 +45,7 @@ start= () => {
 
     }
     document.getElementById("start").addEventListener("click", () => {
-    start();
+      start();
     });
 
     document.getElementById("ee").addEventListener("click", () => {
