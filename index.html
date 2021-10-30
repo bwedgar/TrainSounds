@@ -20,27 +20,20 @@
 
   <audio id="steam" src="steam.mp3"></audio>
   <audio id="seagull" src="seagull.mp3"></audio>
+
   <button id="ee" class="button">steam engine</button><br>
   <button id="oo" class="button">seagull</button><br>
 
   <script>
+
+    audioCtx = new AudioContext || window.webkitAudioContext;
+    const audioElement = document.getElementById("steam");
+    const steam = audioCtx.createMediaElementSource(audioElement);
+
     play = (fileName) => {
 
-      audioCtx = new AudioContext || window.webkitAudioContext;
-      // get the audio element
-      //  const audioElement = document.querySelector('audio');
-      const audioElement = document.getElementById(fileName);
-      // pass it into the audio context
-      const track = audioCtx.createMediaElementSource(audioElement);
-      //source = audioCtx.createBufferSource();
-      track.connect(audioCtx.destination);
 
-      // check if context is in suspended state (autoplay policy)
-    //  if (audioCtx.state === 'suspended') {
-    //    audioCtx.resume();
-  //    }
-
-      // play or pause track depending on state
+      steam.connect(audioCtx.destination);
 
       audioElement.play();
 
