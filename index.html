@@ -33,9 +33,9 @@
       audioCtx = new AudioContext || window.webkitAudioContext;
 
       steamAudioElement = document.getElementById("steam");
-      steamTrack = audioCtx.createMediaElementSource(audioElement);
+      steamTrack = audioCtx.createMediaElementSource(steamAudioElement);
       seagullAudioElement = document.getElementById("seagull");
-      seagullTrack = audioCtx.createMediaElementSource(audioElement);
+      seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
     }
 
 
