@@ -19,31 +19,30 @@
 <body>
 
   <audio id="steam" src="steam.mp3"></audio>
-    <audio id="seagull" src="seagull.mp3"></audio>
-  <button id="ee" class="button">ee</button><br>
-  <button id="oo" class="button">oo</button><br>
-  <button id="i" class="button">i</button><br>
+  <audio id="seagull" src="seagull.mp3"></audio>
+  <button id="ee" class="button">steam engine</button><br>
+  <button id="oo" class="button">seagull</button><br>
 
   <script>
     play = (fileName) => {
 
       audioCtx = new AudioContext || window.webkitAudioContext;
       // get the audio element
-    //  const audioElement = document.querySelector('audio');
-  const audioElement = document.getElementById(fileName);
+      //  const audioElement = document.querySelector('audio');
+      const audioElement = document.getElementById(fileName);
       // pass it into the audio context
       const track = audioCtx.createMediaElementSource(audioElement);
       //source = audioCtx.createBufferSource();
       track.connect(audioCtx.destination);
 
       // check if context is in suspended state (autoplay policy)
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+    //  if (audioCtx.state === 'suspended') {
+    //    audioCtx.resume();
+  //    }
 
       // play or pause track depending on state
 
-        audioElement.play();
+      audioElement.play();
 
 
     }
@@ -55,8 +54,6 @@
     document.getElementById("oo").addEventListener("click", () => {
       play("seagull");
     });
-
-
   </script>
 
 
