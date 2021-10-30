@@ -25,12 +25,14 @@
   <button id="ee" class="button">steam engine</button><br>
   <button id="oo" class="button">seagull</button><br>
   <input type="range" min="0" max="2" value="1" step="0.1" id="steamGainNodeSlider">
+  <input type="range" min="-1" max="+1" value="0" step="0.1" id="steamPannerNodeSlider">
 
 
   <script>
     steam = 0;
     steamGainNode = 0;
     steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
+    steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider");
 
     start = () => {
 
@@ -39,14 +41,16 @@
       steamAudioElement = document.getElementById("steam");
       steamTrack = audioCtx.createMediaElementSource(steamAudioElement);
       steamGainNode=audioCtx.createGain();
+      pannerOptions = { pan: 0 };
+steamPanner = new StereoPannerNode(audioCtx, pannerOptions);
       seagullAudioElement = document.getElementById("seagull");
       seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
     }
 
 
-    playSound = (track, audioElement, gainNode) => {
+    playSound = (track, audioElement, gainNode,pannerNode) => {
       //gainNode = audioCtx.createGain();
-      track.connect(gainNode).connect(audioCtx.destination);
+      track.connect(gainNode).connect(pannerNode).connect(audioCtx.destination);
       audioElement.play();
     }
 
@@ -55,15 +59,19 @@
     });
 
     document.getElementById("ee").addEventListener("click", () => {
-      playSound(steamTrack, steamAudioElement, steamGainNode);
+      playSound(steamTrack, steamAudioElement, steamGainNode,steamPannerNode);
     });
     document.getElementById("oo").addEventListener("click", () => {
-      playSound(seagullTrack, seagullAudioElement, seagullGainNode);
+      playSound(seagullTrack, seagullAudioElement, seagullGainNode,seagullPannerNode);
     });
 
     steamGainNodeSlider.oninput = function() {
       steamGainNode.gain.value = this.value  ;
     }
+    steamPannerNodeSlider.oninput = function() {
+      steamPannerNode.pan.value = this.value  ;
+    }
+
   </script>
 
   v14
