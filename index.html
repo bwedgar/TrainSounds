@@ -24,7 +24,7 @@
   <button id="start" class="button">start</button><br>
   <button id="ee" class="button">steam engine</button><br>
   <button id="oo" class="button">seagull</button><br>
-  <input type="range" min="0" max="1" value=".5" id="steamGainNodeSlider">
+  <input type="range" min="0" max="100" value="50" id="steamGainNodeSlider">
 
 
   <script>
@@ -60,13 +60,13 @@
     });
 
     steamGainNodeSlider.oninput = function() {
-      steamGainNode = this.value;
+      steamGainNode = this.value/100;
     }
 
 
   </script>
 
-  v9
+  v10
 </body>
 
 </html>
