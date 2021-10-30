@@ -21,16 +21,22 @@
   <audio id="steam" src="steam.mp3"></audio>
   <audio id="seagull" src="seagull.mp3"></audio>
 
+  <button id="start" class="button">start</button><br>
   <button id="ee" class="button">steam engine</button><br>
   <button id="oo" class="button">seagull</button><br>
 
   <script>
 
-    audioCtx = new AudioContext || window.webkitAudioContext;
-    const audioElement = document.getElementById("steam");
-    const steam = audioCtx.createMediaElementSource(audioElement);
+start= () {
+
+}  audioCtx = new AudioContext || window.webkitAudioContext;
+  const audioElement = document.getElementById("steam");
+  const steam = audioCtx.createMediaElementSource(audioElement);
+}
+
 
     play = (fileName) => {
+
 
 
       steam.connect(audioCtx.destination);
@@ -39,7 +45,9 @@
 
 
     }
-
+    document.getElementById("start").addEventListener("click", () => {
+    start();
+    });
 
     document.getElementById("ee").addEventListener("click", () => {
       play("steam");
