@@ -32,7 +32,7 @@
 
     audioCtx = new AudioContext || window.webkitAudioContext;
     const audioElement = document.getElementById("steam");
-    const steam = audioCtx.createMediaElementSource(audioElement);
+    const track = audioCtx.createMediaElementSource(audioElement);
     }
 
 
@@ -40,7 +40,7 @@
 
 
 
-      steam.connect(audioCtx.destination);
+      track.connect(audioCtx.destination);
 
       audioElement.play();
 
