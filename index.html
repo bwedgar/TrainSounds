@@ -38,13 +38,14 @@
 
       steamAudioElement = document.getElementById("steam");
       steamTrack = audioCtx.createMediaElementSource(steamAudioElement);
+      steamGainNode=audioCtx.createGain();
       seagullAudioElement = document.getElementById("seagull");
       seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
     }
 
 
     playSound = (track, audioElement, gainNode) => {
-      gainNode = audioCtx.createGain();
+      //gainNode = audioCtx.createGain();
       track.connect(gainNode).connect(audioCtx.destination);
       audioElement.play();
     }
@@ -65,7 +66,7 @@
     }
   </script>
 
-  v13
+  v14
 </body>
 
 </html>
