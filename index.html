@@ -19,17 +19,18 @@
 <body>
 
   <audio id="steam" src="steam.mp3"></audio>
+    <audio id="seagull" src="seagull.mp3"></audio>
   <button id="ee" class="button">ee</button><br>
   <button id="oo" class="button">oo</button><br>
   <button id="i" class="button">i</button><br>
 
   <script>
-    play = (formant1, formant2, formant3) => {
+    play = (fileName) => {
 
       audioCtx = new AudioContext || window.webkitAudioContext;
       // get the audio element
     //  const audioElement = document.querySelector('audio');
-  const audioElement = document.getElementById('steam');
+  const audioElement = document.getElementById(fileName);
       // pass it into the audio context
       const track = audioCtx.createMediaElementSource(audioElement);
       //source = audioCtx.createBufferSource();
@@ -49,14 +50,12 @@
 
 
     document.getElementById("ee").addEventListener("click", () => {
-      play(270, 2300, 3000);
+      play(steam);
     });
     document.getElementById("oo").addEventListener("click", () => {
-      play(300, 870, 2250);
+      play(seagull);
     });
-    document.getElementById("i").addEventListener("click", () => {
-      play(400, 2000, 2550);
-    });
+
 
   </script>
 
