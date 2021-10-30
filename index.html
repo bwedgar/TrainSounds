@@ -18,7 +18,7 @@
 
 <body>
 
-  <audio src="steam.mp3"></audio>
+  <audio id="steam" src="steam.mp3"></audio>
   <button id="ee" class="button">ee</button><br>
   <button id="oo" class="button">oo</button><br>
   <button id="i" class="button">i</button><br>
@@ -28,8 +28,8 @@
 
       audioCtx = new AudioContext || window.webkitAudioContext;
       // get the audio element
-      const audioElement = document.querySelector('audio');
-
+    //  const audioElement = document.querySelector('audio');
+  const audioElement = document.getElementById('steam');
       // pass it into the audio context
       const track = audioCtx.createMediaElementSource(audioElement);
       //source = audioCtx.createBufferSource();
