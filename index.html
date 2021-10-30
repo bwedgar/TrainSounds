@@ -24,13 +24,13 @@
   <button id="start" class="button">start</button><br>
   <button id="ee" class="button">steam engine</button><br>
   <button id="oo" class="button">seagull</button><br>
-  <input type="range" min="0" max="100" value="50" id="steamGainNodeSlider">
+  <input type="range" min="0" max="2" value="1" step="0.1" id="steamGainNodeSlider">
 
 
   <script>
     steam = 0;
-    steamGainNode =0;
-    steamGainNodeSlider=document.getElementById("steamGainNodeSlider");
+    steamGainNode = 0;
+    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
 
     start = () => {
 
@@ -45,7 +45,7 @@
 
     playSound = (track, audioElement, gainNode) => {
       gainNode = audioCtx.createGain();
-  track.connect(gainNode).connect(audioCtx.destination);
+      track.connect(gainNode).connect(audioCtx.destination);
       audioElement.play();
     }
 
@@ -61,13 +61,11 @@
     });
 
     steamGainNodeSlider.oninput = function() {
-      steamGainNode = this.value/100;
+      steamGainNode.gain.value = this.value  ;
     }
-
-
   </script>
 
-  v12
+  v13
 </body>
 
 </html>
