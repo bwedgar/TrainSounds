@@ -33,8 +33,9 @@
 
       steamSound = new Sound("steam");
       seagullSound = new Sound("seagull");
-      tracks = [new Track(5, seagullSound, 1), new Track(6, steamSound, 2)]
+      tracks = [new Track(2, seagullSound, 1), new Track(6, steamSound, 2)]
       tracks[0].play();
+      tracks[1].play();
 
     }
 
@@ -48,9 +49,9 @@
         this.panner = audioCtx.createStereoPanner();
       }
 
-      play() {
+      play(time) {
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
-        this.audioElement.play();
+        this.audioElement.start(audioCtx.currentTime+time);
       }
     }
 
@@ -61,7 +62,7 @@
         this.panValue = panValue;
       }
       play() {
-        this.soundName.play();
+        this.soundName.play(this.time);
       }
     }
 
@@ -96,7 +97,7 @@
     }
   </script>
 
-  v28
+  v29
 </body>
 
 </html>
