@@ -15,7 +15,7 @@
   <audio id="steam" src="steam.mp3"></audio>
   <audio id="seagull" src="seagull.mp3"></audio>
   <audio id="Cats" src="Cats.mp3"></audio>
-    <audio id="Chickens" src="Chickens.mp3"></audio>
+  <audio id="Chickens" src="Chickens.mp3"></audio>
 
   <button id="start" class="button">start</button><br>
 
@@ -38,18 +38,20 @@
 
       steamSound = new Sound("steam");
       seagullSound = new Sound("seagull");
-            CatsSound = new Sound("Cats");
-                  ChickensSound = new Sound("Chickens");
+      CatsSound = new Sound("Cats");
+      ChickensSound = new Sound("Chickens");
 
       tracks = [
         new Track(0, CatsSound, 1),
-        new Track(3, ChickensSound, 1),
-        new Track(6,steamSound , 1),
-        new Track(10, seagullSound, 2)
+      //  new Track(3, ChickensSound, 1),
+      //  new Track(6, steamSound, 1),
+      //  new Track(10, seagullSound, 2)
       ]
 
       for (t of tracks) {
-        setTimeout(function(){t.play()}, t.time * 1000);
+        setTimeout(function() {
+          t.play()
+        }, t.time * 1000);
       }
     }
 
@@ -82,7 +84,7 @@
 
 
 
-    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
+/*    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
     steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
 
 
@@ -90,11 +92,11 @@
     playSound = (sound) => {
       sound.play();
     }
-
+*/
     document.getElementById("start").addEventListener("click", () => {
       start();
     });
-
+/*
     document.getElementById("ee").addEventListener("click", () => {
       playSound(steamSound);
     });
@@ -109,9 +111,11 @@
     steamPannerNodeSlider.oninput = function() {
       steamPanner.pan.value = steamPannerNodeSlider.value;
     }
+
+    */
   </script>
 
-  v35
+  v36
 </body>
 
 </html>
