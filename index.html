@@ -35,7 +35,7 @@
       seagullSound = new Sound("seagull");
       tracks = [new Track(12, seagullSound, 1), new Track(6, steamSound, 2)]
       for (track of tracks) {
-        setTimeout(track.play(), track.time * 1000);
+        setTimeout(function(){track.play()}, track.time * 1000);
       }
     }
 
@@ -97,7 +97,7 @@
     }
   </script>
 
-  v32
+  v33
 </body>
 
 </html>
