@@ -29,9 +29,10 @@
     audioCtx = new AudioContext || window.webkitAudioContext;
 
 
-    steamSound=new Sound("steam","steam.mp3");
+    steamSound=new Sound("steam");
+  seagullSound=new Sound("seagull");
 
-    console.log(steamSound.fileName);
+//    console.log(steamSound.fileName);
   /*  steamAudioElement = document.getElementById("steam");
     steamTrack = audioCtx.createMediaElementSource(steamAudioElement);
     steamGainNode = audioCtx.createGain();
@@ -42,14 +43,14 @@
 
     steamPanner=audioCtx.createStereoPanner();
     */
-    seagullAudioElement = document.getElementById("seagull");
-    seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
+  //  seagullAudioElement = document.getElementById("seagull");
+//    seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
   }
 
   class Sound {
-    constructor (name,fileName) {
+    constructor (name) {
       this.name=name;
-      this.fileName=fileName;
+      this.fileName=this.name+".mp3";
       this.audioElement = document.getElementById(name);
      this.track = audioCtx.createMediaElementSource(this.audioElement);
       this.gainNode = audioCtx.createGain();
@@ -62,11 +63,11 @@
   }
 
 
-    steam = 0;
+  /*  steam = 0;
     steamGainNode = 0;
     steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
     steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
-
+*/
 
 
     playSound = (sound) => {
@@ -75,15 +76,19 @@
     //  audioElement.play();
     sound.play();
     }
+
     document.getElementById("start").addEventListener("click", () => {
       start();
     });
+
     document.getElementById("ee").addEventListener("click", () => {
       playSound(steamSound);
     });
+
     document.getElementById("oo").addEventListener("click", () => {
-      playSound(seagullTrack, seagullAudioElement, seagullGainNode, seagullPannerNode);
+      playSound(seagullSound);
     });
+
     steamGainNodeSlider.oninput = function() {
       steamGainNode.gain.value = this.value;
     }
@@ -92,7 +97,7 @@
     }
   </script>
 
-  v24
+  v25
 </body>
 
 </html>
