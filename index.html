@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -6,77 +7,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="apple-touch-icon" href="launch.png">
   <link rel="apple-touch-startup-image" href="launch.png">
-  <meta name="apple-mobile-web-app-title" content="Korero">
+  <meta name="apple-mobile-web-app-title" content="Push To Telescope">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: verdana;
+      font-size: 120%;
+    }
 
-
-</head>
-
-
-<body>
-
-  <audio id="steam" src="steam.mp3"></audio>
-  <audio id="seagull" src="seagull.mp3"></audio>
-
-  <button id="start" class="button">start</button><br>
-  <button id="ee" class="button">steam engine</button><br>
-  <button id="oo" class="button">seagull</button><br>
-  <input type="range" min="0" max="2" value="1" step="0.1" id="steamGainNodeSlider">
-  <br>
-  <input type="range" min="-1" max="1" value="0" step="0.1" id="steamPannerNodeSlider1">
-
+    .button {
+      background-color: black;
+      color: red;
+      font-family: verdana;
+      font-size: 7vw;
+      border: 1px solid red;
+      padding: 2% 2%;
+      text-align: left;
+    }
+  </style>
 
   <script>
-    steam = 0;
-    steamGainNode = 0;
-    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
-    steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
+    function ready() {
 
-    start = () => {
+      function BufferLoader(context, urlList, callback) {
+  this.context = context;
+  this.urlList = urlList;
+  this.onload = callback;
+  this.bufferList = new Array();
+  this.loadCount = 0;
+}
 
-      audioCtx = new AudioContext || window.webkitAudioContext;
+BufferLoader.prototype.loadBuffer = function(url, index) {
+  // Load buffer asynchronously
+  var request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.responseType = "arraybuffer";
 
-      steamAudioElement = document.getElementById("steam");
-      steamTrack = audioCtx.createMediaElementSource(steamAudioElement);
-      steamGainNode = audioCtx.createGain();
-      pannerOptions = {
-        pan: 0
-      };
-      steamPanner = new StereoPannerNode(audioCtx, pannerOptions);
-      seagullAudioElement = document.getElementById("seagull");
-      seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
+  var loader = this;
+
+  request.onload = function() {
+    // Asynchronously decode the audio file data in request.response
+    loader.context.decodeAudioData(
+      request.response,
+      function(buffer) {
+        if (!buffer) {
+          alert('error decoding file data: ' + url);
+          return;
+        }
+        loader.bufferList[index] = buffer;
+        if (++loader.loadCount == loader.urlList.length)
+          loader.onload(loader.bufferList);
+      },
+      function(error) {
+        console.error('decodeAudioData error', error);
+      }
+    );
+  }
+
+  request.onerror = function() {
+    alert('BufferLoader: XHR error');
+  }
+
+  request.send();
+}
+
+BufferLoader.prototype.load = function() {
+  for (var i = 0; i < this.urlList.length; ++i)
+  this.loadBuffer(this.urlList[i], i);
+}
+
+window.onload = init;
+var context;
+var bufferLoader;
+
+function init() {
+  // Fix up prefixing
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  context = new AudioContext();
+
+  bufferLoader = new BufferLoader(
+    context,
+    [
+      'seagull.mp3',
+      'train.mp3',
+    ],
+    finishedLoading
+    );
+
+  bufferLoader.load();
+}
+
+function finishedLoading(bufferList) {
+  // Create two sources and play them both together.
+  var source1 = context.createBufferSource();
+  var source2 = context.createBufferSource();
+  source1.buffer = bufferList[0];
+  source2.buffer = bufferList[1];
+
+  source1.connect(context.destination);
+  source2.connect(context.destination);
+  source1.start(0);
+  source2.start(0);
+}
+
     }
 
-
-    playSound = (track, audioElement, gainNode, pannerNode) => {
-      //gainNode = audioCtx.createGain();
-      track.connect(gainNode).connect(pannerNode).connect(audioCtx.destination);
-      audioElement.play();
-    }
-
-    document.getElementById("start").addEventListener("click", () => {
-      start();
-    });
-
-    document.getElementById("ee").addEventListener("click", () => {
-      playSound(steamTrack, steamAudioElement, steamGainNode, steamPanner);
-    });
-    document.getElementById("oo").addEventListener("click", () => {
-      playSound(seagullTrack, seagullAudioElement, seagullGainNode, seagullPannerNode);
-    });
-
-    steamGainNodeSlider.oninput = function() {
-      steamGainNode.gain.value = this.value;
-    }
-    steamPannerNodeSlider.oninput = function() {
-      steamPanner.pan.value = steamPannerNodeSlider.value;
+    if (document.readyState == 'loading') {
+      document.addEventListener('DOMContentLoaded', ready);
+    } else {
+      ready();
     }
   </script>
 
-  v22
+</head>
+
+<body>
+  <div>
+
+    <button id="whiteNoise" class="buttonGroup8">white noise</button>
+    <button id="bit6" class="buttonGroup8">0</button>
+    <button id="bit5" class="buttonGroup8">0</button>
+    <button id="bit4" class="buttonGroup8">0</button>
+    <button id="bit3" class="buttonGroup8">0</button>
+    <button id="bit2" class="buttonGroup8">0</button>
+    <button id="bit1" class="buttonGroup8">0</button>
+    <button id="bit0" class="buttonGroup8">0</button>
+  </div>
+
 </body>
 
 </html>
