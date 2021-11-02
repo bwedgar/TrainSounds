@@ -14,7 +14,12 @@
 <body>
   <audio id="steam" src="steam.mp3"></audio>
   <audio id="seagull" src="seagull.mp3"></audio>
+  <audio id="Cats" src="Cats.mp3"></audio>
+    <audio id="Chickens" src="Chickens.mp3"></audio>
+
   <button id="start" class="button">start</button><br>
+
+
   <button id="ee" class="button">steam engine</button><br>
   <button id="oo" class="button">seagull</button><br>
   <input type="range" min="0" max="2" value="1" step="0.1" id="steamGainNodeSlider">
@@ -33,9 +38,18 @@
 
       steamSound = new Sound("steam");
       seagullSound = new Sound("seagull");
-      tracks = [new Track(12, seagullSound, 1), new Track(6, steamSound, 2)]
-      for (track of tracks) {
-        setTimeout(function(){track.play()}, track.time * 1000);
+            CatsSound = new Sound("Cats");
+                  ChickensSound = new Sound("Chickens");
+
+      tracks = [
+        new Track(0, CatsSound, 1),
+        new Track(3, ChickensSound, 1),
+        new Track(6,steamSound , 1),
+        new Track(10, seagullSound, 2)
+      ]
+
+      for (t of tracks) {
+        setTimeout(function(){t.play()}, t.time * 1000);
       }
     }
 
@@ -97,7 +111,7 @@
     }
   </script>
 
-  v33
+  v35
 </body>
 
 </html>
