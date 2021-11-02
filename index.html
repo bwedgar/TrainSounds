@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="apple-touch-icon" href="launch.png">
@@ -9,6 +10,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
+
 <body>
   <audio id="steam" src="steam.mp3"></audio>
   <audio id="seagull" src="seagull.mp3"></audio>
@@ -22,60 +24,55 @@
 
 
   <script>
+    var audioCtx;
+    var tracks;
 
-  var   audioCtx ;
-
-  start = () => {
-    audioCtx = new AudioContext || window.webkitAudioContext;
+    start = () => {
+      audioCtx = new AudioContext || window.webkitAudioContext;
 
 
-    steamSound=new Sound("steam");
-  seagullSound=new Sound("seagull");
+      steamSound = new Sound("steam");
+      seagullSound = new Sound("seagull");
+      tracks[0].play();
 
-//    console.log(steamSound.fileName);
-  /*  steamAudioElement = document.getElementById("steam");
-    steamTrack = audioCtx.createMediaElementSource(steamAudioElement);
-    steamGainNode = audioCtx.createGain();
- pannerOptions = {
-      pan: 0
-    };
-    steamPanner = new StereoPannerNode(audioCtx, pannerOptions);
-
-    steamPanner=audioCtx.createStereoPanner();
-    */
-  //  seagullAudioElement = document.getElementById("seagull");
-//    seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
-  }
-
-  class Sound {
-    constructor (name) {
-      this.name=name;
-      this.fileName=this.name+".mp3";
-      this.audioElement = document.getElementById(name);
-     this.track = audioCtx.createMediaElementSource(this.audioElement);
-      this.gainNode = audioCtx.createGain();
-      this.panner=audioCtx.createStereoPanner();
     }
-    play(){
-      this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
-      this.audioElement.play();
+
+    class Sound {
+      constructor(soundName) {
+        this.soundName = soundName;
+        this.fileName = this.soundName + ".mp3";
+        this.audioElement = document.getElementById(soundName);
+        this.track = audioCtx.createMediaElementSource(this.audioElement);
+        this.gainNode = audioCtx.createGain();
+        this.panner = audioCtx.createStereoPanner();
+      }
+
+      play() {
+        this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
+        this.audioElement.play();
+      }
     }
-  }
+
+    class Track {
+      constructor(time, soundName, panValue) {
+        this.time = time;
+        this.soundName = soundName;
+        this.panValue = panValue;
+      }
+      play() {
+        this.soundName.play();
+      }
+    }
+tracks=[new Track(5,seagullSound,1),new Track(6,steamSound,2)]
 
 
-  /*  steam = 0;
-    steamGainNode = 0;
-    */
     steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
     steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
 
 
 
     playSound = (sound) => {
-      //gainNode = audioCtx.createGain();
-    //  track.connect(gainNode).connect(pannerNode).connect(audioCtx.destination);
-    //  audioElement.play();
-    sound.play();
+      sound.play();
     }
 
     document.getElementById("start").addEventListener("click", () => {
@@ -98,7 +95,7 @@
     }
   </script>
 
-  v26
+  v27
 </body>
 
 </html>
