@@ -33,10 +33,10 @@
 
       steamSound = new Sound("steam");
       seagullSound = new Sound("seagull");
-      tracks = [new Track(2, seagullSound, 1), new Track(6, steamSound, 2)]
-      setTimeout(tracks[0].play(),tracks[0].time*1000);
-      setTimeout(tracks[1].play(),tracks[1].time*1000);
-
+      tracks = [new Track(12, seagullSound, 1), new Track(6, steamSound, 2)]
+      for (track of tracks) {
+        setTimeout(track.play(), track.time * 1000);
+      }
     }
 
     class Sound {
@@ -97,7 +97,7 @@
     }
   </script>
 
-  v30
+  v32
 </body>
 
 </html>
