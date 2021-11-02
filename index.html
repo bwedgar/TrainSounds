@@ -26,18 +26,22 @@
     steamGainNode = 0;
     steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
     steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
+
     start = () => {
       audioCtx = new AudioContext || window.webkitAudioContext;
       steamAudioElement = document.getElementById("steam");
       steamTrack = audioCtx.createMediaElementSource(steamAudioElement);
       steamGainNode = audioCtx.createGain();
-      pannerOptions = {
+    /*  pannerOptions = {
         pan: 0
       };
       steamPanner = new StereoPannerNode(audioCtx, pannerOptions);
+      */
+      steamPanner=audioCtx.createStereoPanner();
       seagullAudioElement = document.getElementById("seagull");
       seagullTrack = audioCtx.createMediaElementSource(seagullAudioElement);
     }
+
     playSound = (track, audioElement, gainNode, pannerNode) => {
       //gainNode = audioCtx.createGain();
       track.connect(gainNode).connect(pannerNode).connect(audioCtx.destination);
@@ -60,8 +64,7 @@
     }
   </script>
 
-  v19
-  v22
+  v23
 </body>
 
 </html>
