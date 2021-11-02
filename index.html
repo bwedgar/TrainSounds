@@ -33,6 +33,7 @@
 
       steamSound = new Sound("steam");
       seagullSound = new Sound("seagull");
+      tracks = [new Track(5, seagullSound, 1), new Track(6, steamSound, 2)]
       tracks[0].play();
 
     }
@@ -63,7 +64,7 @@
         this.soundName.play();
       }
     }
-tracks=[new Track(5,seagullSound,1),new Track(6,steamSound,2)]
+
 
 
     steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
@@ -95,7 +96,7 @@ tracks=[new Track(5,seagullSound,1),new Track(6,steamSound,2)]
     }
   </script>
 
-  v27
+  v28
 </body>
 
 </html>
