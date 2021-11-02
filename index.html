@@ -49,9 +49,10 @@
       ]
 
       for (t of tracks) {
-        setTimeout(
-          t.play
-        , t.time * 1000);
+        setTimeout(function(){
+          t.play();
+          console.log(t.time+"  "+t.soundName)
+      }  , t.time * 1000);
       }
     }
 
@@ -115,7 +116,7 @@
     */
   </script>
 
-  v37
+  v38
 </body>
 
 </html>
