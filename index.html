@@ -43,15 +43,15 @@
 
       tracks = [
         new Track(0, CatsSound, 1),
-      //  new Track(3, ChickensSound, 1),
+        new Track(6, ChickensSound, 1),
       //  new Track(6, steamSound, 1),
       //  new Track(10, seagullSound, 2)
       ]
 
       for (t of tracks) {
-        setTimeout(function() {
-          t.play()
-        }, t.time * 1000);
+        setTimeout(
+          t.play
+        , t.time * 1000);
       }
     }
 
@@ -115,7 +115,7 @@
     */
   </script>
 
-  v36
+  v37
 </body>
 
 </html>
