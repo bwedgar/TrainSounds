@@ -42,7 +42,7 @@
       ChickensSound = new Sound("Chickens");
 
       tracks = [
-        new Track(0, CatsSound, 1),
+        new Track(1, CatsSound, 1),
         new Track(6, ChickensSound, 1),
       //  new Track(6, steamSound, 1),
       //  new Track(10, seagullSound, 2)
@@ -51,7 +51,7 @@
       for (t of tracks) {
         setTimeout(function(){
           t.play();
-          console.log(t.time+"  "+t.soundName)
+          console.log(t.time+"  "+t.soundName.toString())
       }  , t.time * 1000);
       }
     }
@@ -116,7 +116,7 @@
     */
   </script>
 
-  v38
+  v39
 </body>
 
 </html>
