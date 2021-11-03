@@ -26,6 +26,11 @@
   <script>
     var audioCtx;
     var tracks;
+    var steamSound;
+    var seagullSound ;
+    var CatsSound;
+    var ChickensSound ;
+
     var started = false;
     output = document.getElementById("output");
 
@@ -34,8 +39,8 @@
       if (started == false) {
         alert("started");
         started = true;
-        audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-        //  audioCtx = new AudioContext || window.webkitAudioContext;
+        //audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+          audioCtx = new AudioContext || window.webkitAudioContext;
 
 
         steamSound = new Sound("steam");
@@ -97,7 +102,7 @@
     });
   </script>
 
-  <br><br> v54
+  <br><br> v55
 </body>
 
 </html>
