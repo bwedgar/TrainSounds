@@ -33,90 +33,100 @@
     var tracks;
 
     start = () => {
-      audioCtx = new AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext || window.webkitAudioContext;
 
 
-      steamSound = new Sound("steam");
-      seagullSound = new Sound("seagull");
-      CatsSound = new Sound("Cats");
-      ChickensSound = new Sound("Chickens");
+        steamSound = new Sound("steam");
+        seagullSound = new Sound("seagull");
+        CatsSound = new Sound("Cats");
+        ChickensSound = new Sound("Chickens");
 
-      tracks = [
-        new Track(1, CatsSound, 1),
-        new Track(6, ChickensSound, 1),
-        //  new Track(6, steamSound, 1),
-        //  new Track(10, seagullSound, 2)
-      ]
+        tracks = [
+          new Track(1, CatsSound, 1),
+          new Track(6, ChickensSound, 1),
+          //  new Track(6, steamSound, 1),
+          //  new Track(10, seagullSound, 2)
+        ]
 
-      for (t of tracks) {
-          setTimeout(function(){
-           t.soundName.play();
-        console.log(t.time + "  " + t.soundName.fileName);
-          }  , t.time * 1000);
-      }
-    }
-
-    class Sound {
-      constructor(soundName) {
-        this.soundName = soundName;
-        this.fileName = this.soundName + ".mp3";
-        this.audioElement = document.getElementById(soundName);
-        this.track = audioCtx.createMediaElementSource(this.audioElement);
-        this.gainNode = audioCtx.createGain();
-        this.panner = audioCtx.createStereoPanner();
-      }
-
-      play(time) {
-        this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
-        this.audioElement.play();
-      }
-    }
-
-    class Track {
-      constructor(time, soundName, panValue) {
-        this.time = time;
-        this.soundName = soundName;
-        this.panValue = panValue;
-      }
-      play() {
-        this.soundName.play();
-      }
-    }
-
-
-
-    /*    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
-        steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
-
-
-
-        playSound = (sound) => {
-          sound.play();
+        /*  for (t of tracks) {
+            setTimeout(function() {
+              t.soundName.play();
+              console.log(t.time + "  " + t.soundName.fileName);
+            }, t.time * 1000);
+          }
         }
-    */
-    document.getElementById("start").addEventListener("click", () => {
-      start();
-    });
-    /*
-        document.getElementById("ee").addEventListener("click", () => {
-          playSound(steamSound);
-        });
-
-        document.getElementById("oo").addEventListener("click", () => {
-          playSound(seagullSound);
-        });
-
-        steamGainNodeSlider.oninput = function() {
-          steamGainNode.gain.value = this.value;
-        }
-        steamPannerNodeSlider.oninput = function() {
-          steamPanner.pan.value = steamPannerNodeSlider.value;
-        }
-
         */
+
+        setTimeout(function() {
+          tracks[0].soundName.play();
+          console.log(tracks[0].time + "  " + tracks[0].soundName.fileName);
+        }, tracks[0].time * 1000);
+
+        setTimeout(function() {
+          tracks[1].soundName.play();
+          console.log(tracks[1].time + "  " + tracks[1].soundName.fileName);
+        }, tracks[1].time * 1000);
+
+      }
+
+        class Sound {
+          constructor(soundName) {
+            this.soundName = soundName;
+            this.fileName = this.soundName + ".mp3";
+            this.audioElement = document.getElementById(soundName);
+            this.track = audioCtx.createMediaElementSource(this.audioElement);
+            this.gainNode = audioCtx.createGain();
+            this.panner = audioCtx.createStereoPanner();
+          }
+
+          play(time) {
+            this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
+            this.audioElement.play();
+          }
+        }
+
+        class Track {
+          constructor(time, soundName, panValue) {
+            this.time = time;
+            this.soundName = soundName;
+            this.panValue = panValue;
+          }
+        }
+
+
+
+        /*    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
+            steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
+
+
+
+            playSound = (sound) => {
+              sound.play();
+            }
+        */
+        document.getElementById("start").addEventListener("click", () => {
+          start();
+        });
+        /*
+            document.getElementById("ee").addEventListener("click", () => {
+              playSound(steamSound);
+            });
+
+            document.getElementById("oo").addEventListener("click", () => {
+              playSound(seagullSound);
+            });
+
+            steamGainNodeSlider.oninput = function() {
+              steamGainNode.gain.value = this.value;
+            }
+            steamPannerNodeSlider.oninput = function() {
+              steamPanner.pan.value = steamPannerNodeSlider.value;
+            }
+
+            */
   </script>
 
-  v40
+  v41
 </body>
 
 </html>
