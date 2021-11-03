@@ -62,7 +62,7 @@
     playTracks = () => {
       for (let i = 0; i < tracks.length; i++) {
         setTimeout(function() {
-          tracks[i].soundName.play();
+          tracks[i].play();
           output.innerHTML = (tracks[i].time + "  " + tracks[i].soundName.fileName);
         }, tracks[i].time * 1000);
       }
@@ -92,6 +92,9 @@
         this.soundName = soundName;
         this.panValue = panValue;
       }
+      play(){
+        this.soundName.play();
+      }
     }
 
     document.getElementById("start").addEventListener("click", () => {
@@ -103,7 +106,7 @@
     });
   </script>
 
-  <br><br> v56
+  <br><br> v57
 </body>
 
 </html>
