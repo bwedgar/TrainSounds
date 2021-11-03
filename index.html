@@ -41,8 +41,8 @@
         //    alert("started");
 
         started = true;
-        //audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-        audioCtx = new AudioContext || window.webkitAudioContext;
+        audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+      //  audioCtx = new AudioContext || window.webkitAudioContext;
 
 
         steamSound = new Sound("steam");
@@ -114,7 +114,7 @@
     });
   </script>
 
-  <br><br> v63
+  <br><br> v64
 </body>
 
 </html>
