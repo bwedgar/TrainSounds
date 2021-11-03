@@ -32,7 +32,8 @@
     start = () => {
       if (started == false) {
         started = true;
-        audioCtx = new AudioContext || window.webkitAudioContext;
+         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      //  audioCtx = new AudioContext || window.webkitAudioContext;
 
 
         steamSound = new Sound("steam");
@@ -43,7 +44,7 @@
         tracks = [
           //new Track(1, CatsSound, 1),
 //new Track(6, ChickensSound, 1),
-          new Track(16, steamSound, 1),
+          new Track(1, steamSound, 1),
         //  new Track(25, seagullSound, 2)
         ]
 
@@ -94,7 +95,7 @@
     });
   </script>
 
-<br><br>  v48
+<br><br>  v49
 </body>
 
 </html>
