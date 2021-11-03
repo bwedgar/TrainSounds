@@ -30,6 +30,7 @@
     output=document.getElementById("output");
 
     start = () => {
+      document.getElementById("steam").play();
       if (started == false) {
         started = true;
          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -95,7 +96,7 @@
     });
   </script>
 
-<br><br>  v49
+<br><br>  v50
 </body>
 
 </html>
