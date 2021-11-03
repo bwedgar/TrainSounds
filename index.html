@@ -37,8 +37,8 @@
     start = () => {
       document.getElementById("seagull").muted=false;
       document.getElementById("seagull").play();
-      if (started == false) {
-        alert("started");
+    //  if (started == false) {
+    //    alert("started");
         started = true;
         //audioCtx = new(window.AudioContext || window.webkitAudioContext)();
           audioCtx = new AudioContext || window.webkitAudioContext;
@@ -56,7 +56,14 @@
           //  new Track(25, seagullSound, 2)
         ]
 
-      }
+        for (let i = 0; i < tracks.length; i++) {
+          setTimeout(function() {
+            tracks[i].play();
+            output.innerHTML = (tracks[i].time + "  " + tracks[i].soundName.fileName);
+          }, tracks[i].time * 1000);
+        }
+
+    //  }
     }
 
     playTracks = () => {
@@ -106,7 +113,7 @@
     });
   </script>
 
-  <br><br> v57
+  <br><br> v58
 </body>
 
 </html>
