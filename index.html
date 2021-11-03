@@ -30,7 +30,7 @@
     output=document.getElementById("output");
 
     start = () => {
-      document.getElementById("seagull").play();
+      //document.getElementById("seagull").play();
       if (started == false) {
         started = true;
          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -43,16 +43,16 @@
         ChickensSound = new Sound("Chickens");
 
         tracks = [
-          //new Track(1, CatsSound, 1),
-//new Track(6, ChickensSound, 1),
-          new Track(1, steamSound, 1),
+          new Track(1, CatsSound, 1),
+new Track(6, ChickensSound, 1),
+          new Track(12, steamSound, 1)
         //  new Track(25, seagullSound, 2)
         ]
 
       }
     }
 
-    play = () => {
+    playTracks = () => {
       for (let i = 0; i < tracks.length; i++) {
         setTimeout(function() {
           tracks[i].soundName.play();
@@ -92,11 +92,11 @@
     });
 
     document.getElementById("play").addEventListener("click", () => {
-      play();
+      playTracks();
     });
   </script>
 
-<br><br>  v51
+<br><br>  v52
 </body>
 
 </html>
