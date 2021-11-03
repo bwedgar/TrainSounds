@@ -56,7 +56,7 @@
           }
         }
         */
-
+/*
         setTimeout(function() {
           tracks[0].soundName.play();
           console.log(tracks[0].time + "  " + tracks[0].soundName.fileName);
@@ -66,6 +66,15 @@
           tracks[1].soundName.play();
           console.log(tracks[1].time + "  " + tracks[1].soundName.fileName);
         }, tracks[1].time * 1000);
+
+*/
+
+        for (let i = 0; i < 2; i++) {
+          setTimeout(function() {
+            tracks[i].soundName.play();
+            console.log(tracks[i].time + "  " + tracks[i].soundName.fileName);
+          }, tracks[i].time * 1000);
+        }
 
       }
 
@@ -126,7 +135,7 @@
             */
   </script>
 
-  v41
+  v42
 </body>
 
 </html>
