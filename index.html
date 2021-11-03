@@ -44,15 +44,15 @@
       tracks = [
         new Track(1, CatsSound, 1),
         new Track(6, ChickensSound, 1),
-      //  new Track(6, steamSound, 1),
-      //  new Track(10, seagullSound, 2)
+        //  new Track(6, steamSound, 1),
+        //  new Track(10, seagullSound, 2)
       ]
 
       for (t of tracks) {
-        setTimeout(function(){
-          t.play();
-          console.log(t.time+"  "+t.soundName.toString())
-      }  , t.time * 1000);
+          setTimeout(function(){
+           t.soundName.play();
+        console.log(t.time + "  " + t.soundName.fileName);
+          }  , t.time * 1000);
       }
     }
 
@@ -85,38 +85,38 @@
 
 
 
-/*    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
-    steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
+    /*    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
+        steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
 
 
 
-    playSound = (sound) => {
-      sound.play();
-    }
-*/
+        playSound = (sound) => {
+          sound.play();
+        }
+    */
     document.getElementById("start").addEventListener("click", () => {
       start();
     });
-/*
-    document.getElementById("ee").addEventListener("click", () => {
-      playSound(steamSound);
-    });
+    /*
+        document.getElementById("ee").addEventListener("click", () => {
+          playSound(steamSound);
+        });
 
-    document.getElementById("oo").addEventListener("click", () => {
-      playSound(seagullSound);
-    });
+        document.getElementById("oo").addEventListener("click", () => {
+          playSound(seagullSound);
+        });
 
-    steamGainNodeSlider.oninput = function() {
-      steamGainNode.gain.value = this.value;
-    }
-    steamPannerNodeSlider.oninput = function() {
-      steamPanner.pan.value = steamPannerNodeSlider.value;
-    }
+        steamGainNodeSlider.oninput = function() {
+          steamGainNode.gain.value = this.value;
+        }
+        steamPannerNodeSlider.oninput = function() {
+          steamPanner.pan.value = steamPannerNodeSlider.value;
+        }
 
-    */
+        */
   </script>
 
-  v39
+  v40
 </body>
 
 </html>
