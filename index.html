@@ -27,14 +27,14 @@
     var audioCtx;
     var tracks;
     var started = false;
-    output=document.getElementById("output");
+    output = document.getElementById("output");
 
     start = () => {
-      //document.getElementById("seagull").play();
+      document.getElementById("seagull").play();
       if (started == false) {
         started = true;
-         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      //  audioCtx = new AudioContext || window.webkitAudioContext;
+        audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+        //  audioCtx = new AudioContext || window.webkitAudioContext;
 
 
         steamSound = new Sound("steam");
@@ -44,9 +44,9 @@
 
         tracks = [
           new Track(1, CatsSound, 1),
-new Track(6, ChickensSound, 1),
+          new Track(6, ChickensSound, 1),
           new Track(12, steamSound, 1)
-        //  new Track(25, seagullSound, 2)
+          //  new Track(25, seagullSound, 2)
         ]
 
       }
@@ -56,7 +56,7 @@ new Track(6, ChickensSound, 1),
       for (let i = 0; i < tracks.length; i++) {
         setTimeout(function() {
           tracks[i].soundName.play();
-          output.innerHTML=(tracks[i].time + "  " + tracks[i].soundName.fileName);
+          output.innerHTML = (tracks[i].time + "  " + tracks[i].soundName.fileName);
         }, tracks[i].time * 1000);
       }
 
@@ -69,7 +69,7 @@ new Track(6, ChickensSound, 1),
         this.audioElement = document.getElementById(soundName);
         this.track = audioCtx.createMediaElementSource(this.audioElement);
         this.gainNode = audioCtx.createGain();
-          this.gainNode.gain.value = 1;
+        this.gainNode.gain.value = 1;
         this.panner = audioCtx.createStereoPanner();
       }
 
@@ -96,7 +96,7 @@ new Track(6, ChickensSound, 1),
     });
   </script>
 
-<br><br>  v52
+  <br><br> v53
 </body>
 
 </html>
