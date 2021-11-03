@@ -96,13 +96,14 @@ document.getElementById("seagull").play();
         this.gainNode = audioCtx.createGain();
         this.gainNode.gain.value = 1;
       //  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-      this.gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 2);
         this.panner = audioCtx.createStereoPanner();
       }
 
       play() {
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
         this.audioElement.play();
+        this.gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 2);
+
       }
     }
 
@@ -126,7 +127,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v75
+  <br><br> v76
 </body>
 
 </html>
