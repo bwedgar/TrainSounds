@@ -32,6 +32,7 @@
     start = () => {
       document.getElementById("seagull").play();
       if (started == false) {
+        alert("started");
         started = true;
         audioCtx = new(window.AudioContext || window.webkitAudioContext)();
         //  audioCtx = new AudioContext || window.webkitAudioContext;
@@ -96,7 +97,7 @@
     });
   </script>
 
-  <br><br> v53
+  <br><br> v54
 </body>
 
 </html>
