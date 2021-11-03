@@ -91,6 +91,7 @@ document.getElementById("seagull").play();
         this.soundName = soundName;
         this.fileName = this.soundName + ".mp3";
         this.audioElement = document.getElementById(soundName);
+        this.audioElement.play();
         this.track = audioCtx.createMediaElementSource(this.audioElement);
         this.gainNode = audioCtx.createGain();
         this.gainNode.gain.value = 1;
@@ -123,7 +124,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v72
+  <br><br> v73
 </body>
 
 </html>
