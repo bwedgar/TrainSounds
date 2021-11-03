@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <audio id="steam" src="steam.mp3"></audio>
+  <audio id="steam" src="steam.mp3" preload="auto"></audio>
   <audio id="seagull" src="seagull.mp3"></audio>
   <audio id="Cats" src="Cats.mp3"></audio>
   <audio id="Chickens" src="Chickens.mp3"></audio>
@@ -52,7 +52,7 @@
         seagullSound = new Sound("seagull");
         CatsSound = new Sound("Cats");
         ChickensSound = new Sound("Chickens");
-steamSound.play();
+document.getElementById("steam").play();
         tracks = [
           new Track(1, CatsSound, 1),
           new Track(6, ChickensSound, 1),
@@ -117,7 +117,7 @@ steamSound.play();
     });
   </script>
 
-  <br><br> v66
+  <br><br> v67
 </body>
 
 </html>
