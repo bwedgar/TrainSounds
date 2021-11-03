@@ -18,6 +18,7 @@
   <audio id="Chickens" src="Chickens.mp3"></audio>
 
   <button id="start" class="button">start</button><br>
+  <button id="play" class="button">play</button><br>
 
 
   <script>
@@ -27,7 +28,7 @@
 
     start = () => {
       if (started == false) {
-        started=true;
+        started = true;
         audioCtx = new AudioContext || window.webkitAudioContext;
 
 
@@ -44,7 +45,9 @@
         ]
 
       }
+    }
 
+    play = () => {
       for (let i = 0; i < tracks.length; i++) {
         setTimeout(function() {
           tracks[i].soundName.play();
@@ -82,9 +85,12 @@
       start();
     });
 
+    document.getElementById("play").addEventListener("click", () => {
+      play();
+    });
   </script>
 
-  v45
+<br><br>  v46
 </body>
 
 </html>
