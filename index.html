@@ -41,10 +41,10 @@
         ChickensSound = new Sound("Chickens");
 
         tracks = [
-          new Track(1, CatsSound, 1),
-          new Track(6, ChickensSound, 1),
+          //new Track(1, CatsSound, 1),
+//new Track(6, ChickensSound, 1),
           new Track(16, steamSound, 1),
-          new Track(25, seagullSound, 2)
+        //  new Track(25, seagullSound, 2)
         ]
 
       }
@@ -67,6 +67,7 @@
         this.audioElement = document.getElementById(soundName);
         this.track = audioCtx.createMediaElementSource(this.audioElement);
         this.gainNode = audioCtx.createGain();
+          this.gainNode.gain.value = 1;
         this.panner = audioCtx.createStereoPanner();
       }
 
@@ -93,7 +94,7 @@
     });
   </script>
 
-<br><br>  v47
+<br><br>  v48
 </body>
 
 </html>
