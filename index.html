@@ -31,8 +31,10 @@
   <script>
     var audioCtx;
     var tracks;
+    var started = false;
 
     start = () => {
+      if (started == false) {
         audioCtx = new AudioContext || window.webkitAudioContext;
 
 
@@ -44,98 +46,54 @@
         tracks = [
           new Track(1, CatsSound, 1),
           new Track(6, ChickensSound, 1),
-            new Track(16, steamSound, 1),
-            new Track(25, seagullSound, 2)
+          new Track(16, steamSound, 1),
+          new Track(25, seagullSound, 2)
         ]
-
-        /*  for (t of tracks) {
-            setTimeout(function() {
-              t.soundName.play();
-              console.log(t.time + "  " + t.soundName.fileName);
-            }, t.time * 1000);
-          }
-        }
-        */
-/*
-        setTimeout(function() {
-          tracks[0].soundName.play();
-          console.log(tracks[0].time + "  " + tracks[0].soundName.fileName);
-        }, tracks[0].time * 1000);
-
-        setTimeout(function() {
-          tracks[1].soundName.play();
-          console.log(tracks[1].time + "  " + tracks[1].soundName.fileName);
-        }, tracks[1].time * 1000);
-
-*/
-
-        for (let i = 0; i < tracks.length; i++) {
-          setTimeout(function() {
-            tracks[i].soundName.play();
-            console.log(tracks[i].time + "  " + tracks[i].soundName.fileName);
-          }, tracks[i].time * 1000);
-        }
 
       }
 
-        class Sound {
-          constructor(soundName) {
-            this.soundName = soundName;
-            this.fileName = this.soundName + ".mp3";
-            this.audioElement = document.getElementById(soundName);
-            this.track = audioCtx.createMediaElementSource(this.audioElement);
-            this.gainNode = audioCtx.createGain();
-            this.panner = audioCtx.createStereoPanner();
-          }
+      for (let i = 0; i < tracks.length; i++) {
+        setTimeout(function() {
+          tracks[i].soundName.play();
+          console.log(tracks[i].time + "  " + tracks[i].soundName.fileName);
+        }, tracks[i].time * 1000);
+      }
 
-          play(time) {
-            this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
-            this.audioElement.play();
-          }
-        }
+    }
 
-        class Track {
-          constructor(time, soundName, panValue) {
-            this.time = time;
-            this.soundName = soundName;
-            this.panValue = panValue;
-          }
-        }
+    class Sound {
+      constructor(soundName) {
+        this.soundName = soundName;
+        this.fileName = this.soundName + ".mp3";
+        this.audioElement = document.getElementById(soundName);
+        this.track = audioCtx.createMediaElementSource(this.audioElement);
+        this.gainNode = audioCtx.createGain();
+        this.panner = audioCtx.createStereoPanner();
+      }
+
+      play(time) {
+        this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
+        this.audioElement.play();
+      }
+    }
+
+    class Track {
+      constructor(time, soundName, panValue) {
+        this.time = time;
+        this.soundName = soundName;
+        this.panValue = panValue;
+      }
+    }
 
 
 
-        /*    steamGainNodeSlider = document.getElementById("steamGainNodeSlider");
-            steamPannerNodeSlider = document.getElementById("steamPannerNodeSlider1");
 
-
-
-            playSound = (sound) => {
-              sound.play();
-            }
-        */
-        document.getElementById("start").addEventListener("click", () => {
-          start();
-        });
-        /*
-            document.getElementById("ee").addEventListener("click", () => {
-              playSound(steamSound);
-            });
-
-            document.getElementById("oo").addEventListener("click", () => {
-              playSound(seagullSound);
-            });
-
-            steamGainNodeSlider.oninput = function() {
-              steamGainNode.gain.value = this.value;
-            }
-            steamPannerNodeSlider.oninput = function() {
-              steamPanner.pan.value = steamPannerNodeSlider.value;
-            }
-
-            */
+    document.getElementById("start").addEventListener("click", () => {
+      start();
+    });
   </script>
 
-  v43
+  v44
 </body>
 
 </html>
