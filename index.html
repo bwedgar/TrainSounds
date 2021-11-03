@@ -30,7 +30,7 @@
     output=document.getElementById("output");
 
     start = () => {
-      document.getElementById("steam").play();
+      document.getElementById("seagull").play();
       if (started == false) {
         started = true;
          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -73,7 +73,7 @@
         this.panner = audioCtx.createStereoPanner();
       }
 
-      play(time) {
+      play() {
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
         this.audioElement.play();
       }
@@ -96,7 +96,7 @@
     });
   </script>
 
-<br><br>  v50
+<br><br>  v51
 </body>
 
 </html>
