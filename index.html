@@ -86,14 +86,14 @@
         this.soundName = soundName;
         this.fileName = this.soundName + ".mp3";
         this.audioElement = document.getElementById(soundName);
-          this.audioElement.play();
+        this.audioElement.play();
         this.duration = this.audioElement.duration;
         output.innerHTML = output.innerHTML + this.duration + "  ";
         this.track = audioCtx.createMediaElementSource(this.audioElement);
         this.gainNode = audioCtx.createGain();
         this.gainNode.gain.value = 1;
         //  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-        //  this.panner = audioCtx.createStereoPanner();
+          this.panner = audioCtx.createStereoPanner();
 
       }
 
@@ -101,13 +101,13 @@
 
 
       play(pannerNumber) {
-          this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
-      //  this.track.connect(this.gainNode).connect(audioCtx.destination);
-       this.audioElement.play();
+        this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
+        //  this.track.connect(this.gainNode).connect(audioCtx.destination);
+        this.audioElement.play();
         this.start = pannerList[pannerNumber][0];
         this.end = pannerList[pannerNumber][1];
-          this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
-          this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.duration);
+        this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
+        this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.duration);
 
       }
     }
@@ -132,7 +132,7 @@
     });
   </script>
 
-  <br><br> v106
+  <br><br> v107
 </body>
 
 </html>
