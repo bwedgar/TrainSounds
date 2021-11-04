@@ -105,6 +105,7 @@
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
         //  this.track.connect(this.gainNode).connect(audioCtx.destination);
         this.audioElement.play();
+        this.audioElement.muted=false;
         this.start = pannerList[pannerNumber][0];
         this.end = pannerList[pannerNumber][1];
         this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
@@ -133,7 +134,7 @@
     });
   </script>
 
-  <br><br> v109
+  <br><br> v110
 </body>
 
 </html>
