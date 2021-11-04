@@ -16,9 +16,9 @@
 
 <body>
   <audio id="steam" src="steam.mp3" preload="auto"></audio>
-  <audio id="seagull" src="seagull.mp3"></audio>
-  <audio id="Cats" src="Cats.mp3"></audio>
-  <audio id="Chickens" src="Chickens.mp3"></audio>
+  <audio id="seagull" src="seagull.mp3" preload="auto"></audio>
+  <audio id="Cats" src="Cats.mp3" preload="auto"></audio>
+  <audio id="Chickens" src="Chickens.mp3" preload="auto"></audio>
 
   <button id="start" class="button">start</button><br>
   <button id="play" class="button">play</button><br>
@@ -27,7 +27,6 @@
 
 
   <script>
-    //  var audioCtx;
     var tracks;
     var steamSound;
     var seagullSound;
@@ -49,26 +48,14 @@
     output = document.getElementById("output");
 
     start = () => {
-      //  document.getElementById("seagull").muted=false;
-      //  document.getElementById("seagull").play();
       if (started == false) {
-        //    alert("started");
-
         started = true;
         audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-        //  audioCtx = new AudioContext || window.webkitAudioContext;
-
 
         steamSound = new Sound("steam");
         seagullSound = new Sound("seagull");
         CatsSound = new Sound("Cats");
         ChickensSound = new Sound("Chickens");
-        /*
-document.getElementById("steam").play();
-document.getElementById("Cats").play();
-document.getElementById("Chickens").play();
-document.getElementById("seagull").play();
-*/
 
         tracks = [
           new Track(1, CatsSound, 1),
@@ -140,7 +127,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v90
+  <br><br> v91
 </body>
 
 </html>
