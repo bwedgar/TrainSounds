@@ -71,20 +71,13 @@ document.getElementById("seagull").play();
 */
 
         tracks = [
-          //  new Track(1, CatsSound, 1),
-          //  new Track(6, ChickensSound, 1),
-          new Track(1, steamSound, 3),
-          new Track(6, steamSound, 5) //,
+        new Track(1, CatsSound, ),
+          new Track(10, steamSound, 3),
+          new Track(20, steamSound, 5) ,
+           new Track(40, ChickensSound, 2)
           //  new Track(25, seagullSound, 2)
         ]
 
-        /*  for (let i = 0; i < tracks.length; i++) {
-          setTimeout(function() {
-            tracks[i].play();
-             output.innerHTML = (tracks[i].time + "  " + tracks[i].soundName.fileName);
-          }, tracks[i].time * 1000);
-        }
-*/
       }
     }
 
@@ -124,10 +117,6 @@ document.getElementById("seagull").play();
         this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
         this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.time);
 
-        //this.gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 2);
-        //    this.panner.pan.setValueAtTime(1, audioCtx.currentTime);
-        //    this.panner.pan.linearRampToValueAtTime(-1, audioCtx.currentTime + 6);
-
       }
     }
 
@@ -151,7 +140,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v88
+  <br><br> v89
 </body>
 
 </html>
