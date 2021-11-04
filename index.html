@@ -101,13 +101,13 @@
 
 
       play(pannerNumber) {
-        //  this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
-        this.track.connect(this.gainNode).connect(audioCtx.destination);
+          this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
+      //  this.track.connect(this.gainNode).connect(audioCtx.destination);
        this.audioElement.play();
         this.start = pannerList[pannerNumber][0];
         this.end = pannerList[pannerNumber][1];
-        //  this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
-        //  this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.duration);
+          this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
+          this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.duration);
 
       }
     }
@@ -132,7 +132,7 @@
     });
   </script>
 
-  <br><br> v105
+  <br><br> v106
 </body>
 
 </html>
