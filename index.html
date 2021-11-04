@@ -60,10 +60,11 @@ document.getElementById("seagull").play();
 */
 
         tracks = [
-          new Track(1, CatsSound, 1),
-          new Track(6, ChickensSound, 1),
-          new Track(12, steamSound, 1),
-          new Track(25, seagullSound, 2)
+          //  new Track(1, CatsSound, 1),
+          //  new Track(6, ChickensSound, 1),
+          new Track(1, steamSound, 3) ,
+              new Track(6, steamSound, 5) //,
+          //  new Track(25, seagullSound, 2)
         ]
 
         /*  for (let i = 0; i < tracks.length; i++) {
@@ -100,12 +101,25 @@ document.getElementById("seagull").play();
 
       }
 
-      play() {
+      pannerList=[[0,0,5],[-1,0,5],[0,1,5],[1,0,5],[0,-1,5]];
+
+      panner(pannerNumber) {
+        start=pannerList[pannerNumber][0];
+          end=pannerList[pannerNumber][1];
+            time=pannerList[pannerNumber][2];
+        this.panner.pan.setValueAtTime(start, audioCtx.currentTime);
+        this.panner.pan.linearRampToValueAtTime(end, audioCtx.currentTime + time);
+
+      }
+
+      play(panValue) {
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
         this.audioElement.play();
+        panner(panValue);
         //this.gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 2);
-          this.panner.pan.setValueAtTime(1, audioCtx.currentTime);
-        this.panner.pan.linearRampToValueAtTime(-1, audioCtx.currentTime + 6);
+    //    this.panner.pan.setValueAtTime(1, audioCtx.currentTime);
+    //    this.panner.pan.linearRampToValueAtTime(-1, audioCtx.currentTime + 6);
+
       }
     }
 
@@ -116,7 +130,7 @@ document.getElementById("seagull").play();
         this.panValue = panValue;
       }
       play() {
-        this.soundName.play();
+        this.soundName.play(panValue);
       }
     }
 
@@ -129,7 +143,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v83
+  <br><br> v84
 </body>
 
 </html>
