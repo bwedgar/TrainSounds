@@ -75,7 +75,7 @@
       for (let i = 0; i < tracks.length; i++) {
         setTimeout(function() {
           tracks[i].play();
-          output.innerHTML = (tracks[i].time + "  " + tracks[i].soundName.fileName);
+          output.innerHTML = output.innerHTML+(tracks[i].time + "  " + tracks[i].soundName.fileName);
         }, tracks[i].time * 1000);
       }
 
@@ -88,7 +88,7 @@
         this.audioElement = document.getElementById(soundName);
       //  this.audioElement.play();
         this.duration=this.audioElement.duration;
-        console.log(this.duration);
+        output.innerHTML = output.innerHTML+this.duration+"  ";
         this.track = audioCtx.createMediaElementSource(this.audioElement);
         this.gainNode = audioCtx.createGain();
         this.gainNode.gain.value = 1;
@@ -105,7 +105,7 @@
         this.audioElement.play();
         this.start = pannerList[pannerNumber][0];
         this.end = pannerList[pannerNumber][1];
-        console.log("end "+ this.end);
+      //  console.log("end "+ this.end);
       //  this.time = pannerList[pannerNumber][2];
         this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
         this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.duration);
@@ -133,7 +133,7 @@
     });
   </script>
 
-  <br><br> v100
+  <br><br> v101
 </body>
 
 </html>
