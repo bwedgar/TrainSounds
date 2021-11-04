@@ -87,7 +87,7 @@
         this.fileName = this.soundName + ".mp3";
         this.audioElement = document.getElementById(soundName);
       //  this.audioElement.play();
-              console.log(this.audioElement.duration);
+        this.duration=this.audioElement.duration;
         this.track = audioCtx.createMediaElementSource(this.audioElement);
         this.gainNode = audioCtx.createGain();
         this.gainNode.gain.value = 1;
@@ -107,7 +107,7 @@
         this.end = pannerList[pannerNumber][1];
         this.time = pannerList[pannerNumber][2];
         this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
-        this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.time);
+        this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.duration);
 
       }
     }
@@ -115,7 +115,6 @@
     class Track {
       constructor(time, soundName, panValue) {
         this.time = time;
-
         this.soundName = soundName;
         this.panValue = panValue;
       }
@@ -135,7 +134,7 @@
     });
   </script>
 
-  <br><br> v97
+  <br><br> v98
 </body>
 
 </html>
