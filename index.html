@@ -115,7 +115,7 @@ document.getElementById("seagull").play();
       play(panValue) {
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
         this.audioElement.play();
-        panner(panValue);
+        this.panner(panValue);
         //this.gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 2);
     //    this.panner.pan.setValueAtTime(1, audioCtx.currentTime);
     //    this.panner.pan.linearRampToValueAtTime(-1, audioCtx.currentTime + 6);
@@ -143,7 +143,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v85
+  <br><br> v86
 </body>
 
 </html>
