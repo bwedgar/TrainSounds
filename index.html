@@ -101,8 +101,9 @@
 
 
       play(pannerNumber) {
-        this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
-        this.audioElement.play();
+      //  this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
+       this.track.connect(this.gainNode).connect(audioCtx.destination);
+    this.audioElement.play();
         this.start = pannerList[pannerNumber][0];
         this.end = pannerList[pannerNumber][1];
       //  console.log("end "+ this.end);
@@ -133,7 +134,7 @@
     });
   </script>
 
-  <br><br> v103
+  <br><br> v104
 </body>
 
 </html>
