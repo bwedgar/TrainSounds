@@ -40,7 +40,9 @@
       [-1, 0.01, 3], //[3]=left to centre
       [0.01, 1, 3], //[4]=centre to right
       [1, 0.01, 3], //[5]= right to centre
-      [0.01, -1, 3] //[6]=centre to left
+      [0.01, -1, 3], //[6]=centre to left
+      [-1,1,3], //[7] left to right
+      [1,-1,3]  // [8] right to left
     ];
 
 
@@ -59,8 +61,8 @@
 
         tracks = [
           new Track(1, CatsSound, 1),
-          new Track(10, steamSound, 3),
-          new Track(25, steamSound, 4),
+          new Track(10, steamSound, 7),
+                new Track(20, steamSound, 8),
           new Track(40, ChickensSound, 2),
          new Track(40, seagullSound, 0),
           new Track(40, CatsSound, 1)
@@ -111,6 +113,7 @@
     class Track {
       constructor(time, soundName, panValue) {
         this.time = time;
+        console.log(soundName.duration);
         this.soundName = soundName;
         this.panValue = panValue;
       }
@@ -128,7 +131,7 @@
     });
   </script>
 
-  <br><br> v92
+  <br><br> v93
 </body>
 
 </html>
