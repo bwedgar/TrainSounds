@@ -104,7 +104,7 @@ document.getElementById("seagull").play();
         this.audioElement.play();
         //this.gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 2);
         this.panner.value = 1;
-        this.panner.linearRampToValueAtTime(-1, audioCtx.currentTime + 3);
+        this.panner.pan.value.linearRampToValueAtTime(-1, audioCtx.currentTime + 3);
       }
     }
 
@@ -128,7 +128,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v78
+  <br><br> v79
 </body>
 
 </html>
