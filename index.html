@@ -27,7 +27,7 @@
 
 
   <script>
-  //  var audioCtx;
+    //  var audioCtx;
     var tracks;
     var steamSound;
     var seagullSound;
@@ -45,7 +45,7 @@
 
         started = true;
         audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-      //  audioCtx = new AudioContext || window.webkitAudioContext;
+        //  audioCtx = new AudioContext || window.webkitAudioContext;
 
 
         steamSound = new Sound("steam");
@@ -66,7 +66,7 @@ document.getElementById("seagull").play();
           new Track(25, seagullSound, 2)
         ]
 
-      /*  for (let i = 0; i < tracks.length; i++) {
+        /*  for (let i = 0; i < tracks.length; i++) {
           setTimeout(function() {
             tracks[i].play();
              output.innerHTML = (tracks[i].time + "  " + tracks[i].soundName.fileName);
@@ -95,7 +95,7 @@ document.getElementById("seagull").play();
         this.track = audioCtx.createMediaElementSource(this.audioElement);
         this.gainNode = audioCtx.createGain();
         this.gainNode.gain.value = 1;
-      //  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+        //  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
         this.panner = audioCtx.createStereoPanner();
       }
 
@@ -103,7 +103,8 @@ document.getElementById("seagull").play();
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
         this.audioElement.play();
         this.gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 2);
-
+        this.panner.value = 1;
+        this.panner.value.linearRampToValueAtTime(-1, audioCtx.currentTime + 3);
       }
     }
 
@@ -127,7 +128,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v76
+  <br><br> v77
 </body>
 
 </html>
