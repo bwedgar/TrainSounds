@@ -34,15 +34,15 @@
     var ChickensSound;
 
     pannerList = [
-      [0.01, 0.01, 3], //[0] centre
-      [-1, -1, 3], //[1]=left
-      [1, 1, 3], //[2]=right
-      [-1, 0.01, 3], //[3]=left to centre
-      [0.01, 1, 3], //[4]=centre to right
-      [1, 0.01, 3], //[5]= right to centre
-      [0.01, -1, 3], //[6]=centre to left
-      [-1, 1, 3], //[7] left to right
-      [1, -1, 3] // [8] right to left
+      [0.01, 0.01], //[0] centre
+      [-1, -1], //[1]=left
+      [1, 1 ], //[2]=right
+      [-1, 0.01], //[3]=left to centre
+      [0.01, 1], //[4]=centre to right
+      [1, 0.01], //[5]= right to centre
+      [0.01, -1], //[6]=centre to left
+      [-1, 1], //[7] left to right
+      [1, -1] // [8] right to left
     ];
 
 
@@ -102,10 +102,9 @@
       play(pannerNumber) {
         this.track.connect(this.gainNode).connect(this.panner).connect(audioCtx.destination);
         this.audioElement.play();
-
         this.start = pannerList[pannerNumber][0];
         this.end = pannerList[pannerNumber][1];
-        this.time = pannerList[pannerNumber][2];
+      //  this.time = pannerList[pannerNumber][2];
         this.panner.pan.setValueAtTime(this.start, audioCtx.currentTime);
         this.panner.pan.linearRampToValueAtTime(this.end, audioCtx.currentTime + this.duration);
 
@@ -119,9 +118,7 @@
         this.panValue = panValue;
       }
       play() {
-
         this.soundName.play(this.panValue);
-
       }
     }
 
@@ -134,7 +131,7 @@
     });
   </script>
 
-  <br><br> v98
+  <br><br> v99
 </body>
 
 </html>
