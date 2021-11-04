@@ -97,7 +97,7 @@ document.getElementById("seagull").play();
         this.gainNode.gain.value = 1;
         //  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
         this.panner = audioCtx.createStereoPanner();
-        this.panner.pan.value.setValueAtTime(1, audioCtx.currentTime);
+        this.panner.pan.setValueAtTime(1, audioCtx.currentTime);
       }
 
       play() {
@@ -129,7 +129,7 @@ document.getElementById("seagull").play();
     });
   </script>
 
-  <br><br> v81
+  <br><br> v82
 </body>
 
 </html>
