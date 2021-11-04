@@ -86,7 +86,8 @@
         this.soundName = soundName;
         this.fileName = this.soundName + ".mp3";
         this.audioElement = document.getElementById(soundName);
-        this.audioElement.play();
+        console.log(this.audioElement.play());
+
         this.duration = this.audioElement.duration;
         output.innerHTML = output.innerHTML + this.duration + "  ";
         this.track = audioCtx.createMediaElementSource(this.audioElement);
@@ -132,7 +133,7 @@
     });
   </script>
 
-  <br><br> v107
+  <br><br> v108
 </body>
 
 </html>
